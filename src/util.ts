@@ -1,4 +1,4 @@
-import * as glob from "glob";
+import { sync } from "fast-glob";
 import { statSync, readFileSync } from "fs";
 
 export interface Config {
@@ -91,7 +91,7 @@ const parseMakeLatest = (
 export const paths = (patterns: string[]): string[] => {
   return patterns.reduce((acc: string[], pattern: string): string[] => {
     return acc.concat(
-      glob.sync(pattern).filter((path) => statSync(path).isFile()),
+      sync(pattern).filter((path) => statSync(path).isFile()),
     );
   }, []);
 };
@@ -99,7 +99,7 @@ export const paths = (patterns: string[]): string[] => {
 export const unmatchedPatterns = (patterns: string[]): string[] => {
   return patterns.reduce((acc: string[], pattern: string): string[] => {
     return acc.concat(
-      glob.sync(pattern).filter((path) => statSync(path).isFile()).length == 0
+      sync(pattern).filter((path) => statSync(path).isFile()).length == 0
         ? [pattern]
         : [],
     );
