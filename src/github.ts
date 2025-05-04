@@ -214,7 +214,7 @@ export const release = async (
     console.log(`❌ Too many retries. Aborting...`);
     throw new Error("Too many retries.");
   }
-
+console.log(config)
   const [owner, repo] = config.github_repository.split("/");
   const tag =
     config.input_tag_name ||
