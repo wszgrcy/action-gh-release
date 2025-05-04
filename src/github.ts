@@ -289,6 +289,20 @@ export const release = async (
         : existingRelease.prerelease;
 
     const make_latest = config.input_make_latest;
+console.log({
+  owner,
+  repo,
+  release_id,
+  tag_name,
+  target_commitish,
+  name,
+  body,
+  draft,
+  prerelease,
+  discussion_category_name,
+  generate_release_notes,
+  make_latest,
+});
 
     const release = await releaser.updateRelease({
       owner,
@@ -306,6 +320,8 @@ export const release = async (
     });
     return release.data;
   } catch (error) {
+    console.log(error);
+    
     if (error.status !== 404) {
       console.log(
         `⚠️ Unexpected error fetching GitHub release for tag ${config.github_ref}: ${error}`,
