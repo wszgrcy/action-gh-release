@@ -306,6 +306,7 @@ export const release = async (
     });
     return release.data;
   } catch (error) {
+    console.log(error);
     if (error.status !== 404) {
       console.log(
         `⚠️ Unexpected error fetching GitHub release for tag ${config.github_ref}: ${error}`,

@@ -7,7 +7,7 @@ import {
 } from "./util";
 import { release, upload, GitHubReleaser } from "./github";
 import { getOctokit } from "@actions/github";
-import { setFailed, setOutput } from "@actions/core";
+import { setFailed, setOutput,getInput } from "@actions/core";
 
 import { env } from "process";
 
@@ -41,6 +41,7 @@ async function run() {
     // );
 
     const gh = getOctokit(config.github_token, {
+      baseUrl: getInput('base_url',{required:false})?.trim()||undefined,
       //new oktokit(
       throttle: {
         onRateLimit: (retryAfter, options) => {
