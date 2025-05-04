@@ -303,7 +303,7 @@ console.log({
   generate_release_notes,
   make_latest,
 });
-
+console.log('222222222')
     const release = await releaser.updateRelease({
       owner,
       repo,
@@ -320,6 +320,7 @@ console.log({
     });
     return release.data;
   } catch (error) {
+    console.log('111111111')
     console.log(error);
     
     if (error.status !== 404) {
