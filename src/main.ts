@@ -14,7 +14,6 @@ import { env } from "process";
 async function run() {
   try {
     const config = parseConfig(env);
-    console.log(config);
     
     if (
       !config.input_tag_name &&
