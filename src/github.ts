@@ -397,6 +397,7 @@ async function createRelease(
     // presume a race with competing matrix runs
     console.log(`⚠️ GitHub release failed with status: ${error.status}`);
     console.log(`${JSON.stringify(error.response.data)}`);
+    console.log(error);
 
     switch (error.status) {
       case 403:
